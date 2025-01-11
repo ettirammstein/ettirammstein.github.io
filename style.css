@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); /* Градиентный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    animation: changeColor 5s infinite alternate; /* Анимация фона */
+}
+
+@keyframes changeColor {
+    0% { background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); }
+    25% { background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); }
+    50% { background: linear-gradient(to bottom, #203a43, #2c5364, #47525e); }
+    75% { background: linear-gradient(to bottom, #2c5364, #47525e, #47525e); }
+    100% { background: linear-gradient(to bottom, #47525e, #2c5364, #0f2027); }
+}
+
+.star-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    perspective: 1000px; /* Добавляем трёхмерную перспективу */
+}
+
+.central-star {
+    position: absolute;
+    color: yellow;
+    font-size: 25px; /* Изначальный размер главной звезды */
+    animation: rotateCenter 10s linear infinite, bounce 0.5s;
+    top: 50%; /* Центрирование по вертикали */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translate(-50%, -50%); /* Центрирование относительно центра */
+}
+
+.new-star {
+    position: absolute;
+    color: yellow;
+    animation: appearStar 1s ease-in forwards, moveStar 5s linear infinite, rotateStar 10s linear infinite;
+    opacity: 1; /* Поменяли начальную прозрачность */
+}
+
+@keyframes appearStar {
+    0% {
+        transform: scale(2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes moveStar {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(calc(100vw - 20px), calc(100vh - 20px));
+    }
+}
+
+@keyframes rotateStar {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+  
